@@ -63,6 +63,9 @@
 
   <label for="plainText">Phone Number-Partner Code:</label>
   <input type="text" id="plainText" value="6289123123-010000001">
+  
+  <label for="plainText">v-host:</label>
+  <input type="text" id="vhost" value="https://dana-agathis.ainosi.id">
 
   <label for="secretKey">Modul Config:</label>
   <select id="secretKeyDropdown">
@@ -86,6 +89,7 @@
     function encrypt() {
       // Get values from the input fields
       var plainText = document.getElementById("plainText").value;
+      var vhost = document.getElementById("vhost").value;
       var secretKeyDropdown = document.getElementById("secretKeyDropdown");
       var selectedSecretKey = secretKeyDropdown.options[secretKeyDropdown.selectedIndex].value;
       var iv = document.getElementById("iv").value.substring(document.getElementById("iv").value.length - 16);;
@@ -99,7 +103,7 @@
 
       // Display encrypted text in hex format
       var encryptedTextHex = encrypted.ciphertext.toString(CryptoJS.enc.Hex);
-      document.getElementById("encryptedText").value = encryptedTextHex;
+      document.getElementById("encryptedText").value = vhost+"?param="+encryptedTextHex;
 
       // Decrypt using AES-CBC
       var decrypted = CryptoJS.AES.decrypt(encrypted, secretKeyHex, { iv: ivHex, mode: CryptoJS.mode.CBC });
