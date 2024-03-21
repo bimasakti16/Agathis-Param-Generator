@@ -111,7 +111,9 @@
       var encryptedTextHex = encrypted.ciphertext.toString(CryptoJS.enc.Hex);
       document.getElementById("agathis_url").value = vhost+"?param="+encryptedTextHex;
       document.getElementById("encryptedText").value = encryptedTextHex;
-
+      
+      console.log(document.getElementById("encryptedText").value);
+      
       // Decrypt using AES-CBC
       var decrypted = CryptoJS.AES.decrypt(document.getElementById("encryptedText").value, secretKeyHex, { iv: ivHex, mode: CryptoJS.mode.CBC });
 
