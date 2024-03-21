@@ -62,10 +62,10 @@
   <h1>Generate Agathis URL</h1>
 
   <label for="plainText">Phone Number-Partner Code:</label>
-  <input type="text" id="plainText" value="628000000000-010000001">
+  <input type="text" id="plainText" value="628000000000-010000026">
   
   <label for="plainText">v-Host:</label>
-  <input type="text" id="vhost" value="https://dana-agathis.ainosi.id">
+  <input type="text" id="vhost" value="https://jakone-agathis-tmii-dev.ainosi.id">
 
   <label for="secretKey">Modul Config:</label>
   <select id="secretKeyDropdown">
@@ -75,21 +75,18 @@
     <!-- Add more options as needed -->
   </select>
 
-  <label for="iv">Partner API Key:</label>
+  <label for="iv">Last 16 Digits Partner API Key:</label>
   <input type="text" id="iv">
 
   <button onclick="encrypt()">Generate</button>
+  
+  <h3>Encrypted param:</h3>
+  <input type="text" id="encryptedText">
   
   <h3>URL Agathis:</h3>
   <textarea id="agathis_url" rows="4" cols="50" readonly></textarea>
   
   <button onclick="openurl()">Open URL</button>
-  
-  <h3>Encrypted Text:</h3>
-  <textarea id="encryptedText" rows="4" cols="50"></textarea>
-  
-  <h3>Decrypted Text:</h3>
-  <textarea id="decryptedText" rows="4" cols="50" readonly></textarea>
 
   <script>
     function encrypt() {
