@@ -117,13 +117,14 @@
       // Decrypt using AES-CBC
       var decrypted = CryptoJS.AES.decrypt(document.getElementById("encryptedText").value, secretKeyHex, { iv: ivHex, mode: CryptoJS.mode.CBC });
 
+      console.log(decrypted.toString(CryptoJS.enc.Utf8));
       // Display decrypted text
       var decryptedText = decrypted.toString(CryptoJS.enc.Utf8);
       document.getElementById("decryptedText").value = decryptedText;
     }
 
     function openurl() {
-      var url = document.getElementById("encryptedText").value;
+      var url = document.getElementById("agathis_url").value;
       window.open(url, "_blank");
     }
   </script>
