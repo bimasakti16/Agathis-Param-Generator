@@ -81,12 +81,15 @@
   <button onclick="encrypt()">Generate</button>
   
   <h3>URL Agathis:</h3>
-  <textarea id="encryptedText" rows="4" cols="50" readonly></textarea>
+  <textarea id="agathis_url" rows="4" cols="50" readonly></textarea>
   
   <button onclick="openurl()">Open URL</button>
   
-  <h3 style="display:none">Decrypted Text:</h3>
-  <textarea id="decryptedText" rows="4" cols="50" readonly style="display:none"></textarea>
+  <h3>Decrypted Text:</h3>
+  <textarea id="encryptedText" rows="4" cols="50" readonly></textarea>
+  
+  <h3>Decrypted Text:</h3>
+  <textarea id="decryptedText" rows="4" cols="50" readonly></textarea>
 
   <script>
     function encrypt() {
@@ -106,10 +109,11 @@
 
       // Display encrypted text in hex format
       var encryptedTextHex = encrypted.ciphertext.toString(CryptoJS.enc.Hex);
-      document.getElementById("encryptedText").value = vhost+"?param="+encryptedTextHex;
+      document.getElementById("agathis_url").value = vhost+"?param="+encryptedTextHex;
+      document.getElementById("encryptedText").value = encryptedTextHex;
 
       // Decrypt using AES-CBC
-      var decrypted = CryptoJS.AES.decrypt(encrypted, secretKeyHex, { iv: ivHex, mode: CryptoJS.mode.CBC });
+      var decrypted = CryptoJS.AES.decrypt(document.getElementById("encryptedText").value, secretKeyHex, { iv: ivHex, mode: CryptoJS.mode.CBC });
 
       // Display decrypted text
       var decryptedText = decrypted.toString(CryptoJS.enc.Utf8);
